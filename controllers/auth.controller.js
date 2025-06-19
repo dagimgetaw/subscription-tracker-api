@@ -83,5 +83,9 @@ export const signIn = async (req, res, next) => {
 };
 
 export const signOut = (req, res) => {
-  res.send({ message: "Sign up endpoint" });
+  res.clearCookie("token"); // Only works if it use cookies for JWT
+  res.status(200).json({
+    success: true,
+    message: "User signed out successfully",
+  });
 };
